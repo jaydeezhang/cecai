@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>采购管理智能体 | 中国电子云</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF',
+                        secondary: '#0E42D2',
+                        sidebar: '#F5F7FA',
+                        card: '#FFFFFF',
+                        textPrimary: '#1D2129',
+                        textSecondary: '#4E5969',
+                        border: '#E5E6EB'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .sidebar-item {
+                @apply flex items-center px-4 py-3 text-textSecondary hover:bg-primary/5 hover:text-primary transition-colors duration-200 cursor-pointer;
+            }
+            .sidebar-item.active {
+                @apply bg-primary/10 text-primary border-l-4 border-primary;
+            }
+            .nav-item {
+                @apply px-4 py-2 text-white hover:text-blue-100 transition-colors duration-200;
+            }
+            .card-hover {
+                @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-textPrimary font-sans">
+    <!-- Top Navigation -->
+    <header class="bg-primary shadow-sm fixed top-0 left-0 right-0 z-30">
+        <div class="flex items-center justify-between px-6 h-16">
+            <div class="flex items-center space-x-2">
+                <div class="text-white font-bold text-xl">中国电子云</div>
+                <span class="text-white/80 text-sm">| 采购管理智能体</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-1">
+                <a href="#" class="nav-item border-b-2 border-white">采购</a>
+                <a href="#" class="nav-item border-b-2 border-transparent hover:border-white/50">招投标</a>
+                <a href="#" class="nav-item border-b-2 border-transparent hover:border-white/50">合同审查</a>
+                <a href="#" class="nav-item border-b-2 border-transparent hover:border-white/50">归档与监督</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <button class="text-white hover:text-blue-100">
+                    <i class="fa fa-bell-o"></i>
+                </button>
+                <div class="flex items-center space-x-2">
+                    <img src="https://picsum.photos/id/1005/200" alt="用户头像" class="w-8 h-8 rounded-full object-cover border-2 border-white/20">
+                    <span class="text-white hidden md:inline-block">管理员</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="flex pt-16 min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-sidebar border-r border-border fixed h-[calc(100vh-4rem)] overflow-y-auto z-20">
+            <div class="py-4">
+                <div class="px-4 py-2 text-xs font-semibold text-textSecondary uppercase tracking-wider">采购智能管理</div>
+                <div class="sidebar-item active">
+                    <i class="fa fa-file-text-o w-5 text-center mr-3"></i>
+                    <span>采购单智能撰写</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fa fa-calculator w-5 text-center mr-3"></i>
+                    <span>智能询价</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fa fa-list-alt w-5 text-center mr-3"></i>
+                    <span>采购方案智能撰写</span>
+                </div>
+                <div class="sidebar-item">
+                    <i class="fa fa-check-square-o w-5 text-center mr-3"></i>
+                    <span>预算智能审批</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="flex-1 ml-64 p-6">
+            <div class="max-w-6xl mx-auto">
+                <!-- AI Purchase Order Section -->
+                <div class="bg-card rounded-xl shadow-sm border border-border p-6 mb-8">
+                    <h1 class="text-[clamp(1.5rem,3vw,2rem)] font-bold text-textPrimary mb-6 text-center">
+                        AI 采购单智能撰写
+                    </h1>
+                    <p class="text-textSecondary text-center mb-8">请输入你的采购需求，请包含场景、角色、项目或部门需求，也可以包括预算约束要求</p>
+
+                    <textarea
+                        class="w-full h-32 p-4 border border-border rounded-lg focus:ring-2 focus:ring-primary/30 focus:border-primary outline-none transition-all"
+                        placeholder="我需要为7个UE设计师，8个产品经理，20个前后端研发工程师采购办公设备，包括笔记本电脑，显示器，键盘鼠标，还有其他电脑线材。总预算控制在40万以内。"
+                    ></textarea>
+
+                    <div class="flex flex-wrap items-center justify-between mt-6 gap-4">
+                        <div class="flex items-center space-x-4">
+                            <label class="flex items-center space-x-2 text-textSecondary">
+                                <input type="checkbox" class="rounded text-primary focus:ring-primary/30">
+                                <span>提供采购清单</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-textSecondary">
+                                <input type="checkbox" class="rounded text-primary focus:ring-primary/30">
+                                <span>条件限制</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-textSecondary">
+                                <input type="checkbox" class="rounded text-primary focus:ring-primary/30">
+                                <span>卖点解析</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-textSecondary">
+                                <input type="checkbox" class="rounded text-primary focus:ring-primary/30">
+                                <span>总预算</span>
+                            </label>
+                            <label class="flex items-center space-x-2 text-textSecondary">
+                                <input type="checkbox" class="rounded text-primary focus:ring-primary/30">
+                                <span>总预算</span>
+                            </label>
+                        </div>
+                        <button class="bg-primary hover:bg-secondary text-white px-6 py-2 rounded-lg flex items-center transition-colors">
+                            <span>生成采购单</span>
+                            <i class="fa fa-paper-plane ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Template Section -->
+                <div class="mb-6">
+                    <h2 class="text-lg font-semibold text-textPrimary mb-4">从模板开始创建</h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Template Card 1 -->
+                        <div class="bg-card rounded-xl shadow-sm border border-border overflow-hidden card-hover">
+                            <img src="https://picsum.photos/id/1015/400/200" alt="水利行业模板" class="w-full h-36 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-medium text-textPrimary mb-1">水利行业模板</h3>
+                                <p class="text-sm text-textSecondary">水利企业入水电气，自来水公司的日常采购单</p>
+                            </div>
+                        </div>
+
+                        <!-- Template Card 2 -->
+                        <div class="bg-card rounded-xl shadow-sm border border-border overflow-hidden card-hover">
+                            <img src="https://picsum.photos/id/1031/400/200" alt="银行金融模板" class="w-full h-36 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-medium text-textPrimary mb-1">银行金融模板</h3>
+                                <p class="text-sm text-textSecondary">银行类金融企业日常采购清单</p>
+                            </div>
+                        </div>
+
+                        <!-- Template Card 3 -->
+                        <div class="bg-card rounded-xl shadow-sm border border-border overflow-hidden card-hover">
+                            <img src="https://picsum.photos/id/1059/400/200" alt="餐饮行业模板" class="w-full h-36 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-medium text-textPrimary mb-1">餐饮行业模板</h3>
+                                <p class="text-sm text-textSecondary">大型连锁火锅店，中餐馆，烤肉店采购单</p>
+                            </div>
+                        </div>
+
+                        <!-- Add Template Card -->
+                        <div class="border-2 border-dashed border-border rounded-xl flex flex-col items-center justify-center h-full p-6 text-center hover:border-primary/50 hover:text-primary transition-colors cursor-pointer card-hover">
+                            <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-3">
+                                <i class="fa fa-plus text-primary"></i>
+                            </div>
+                            <h3 class="font-medium text-textPrimary mb-1">人工创建采购单</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Mobile menu toggle functionality can be added here if needed
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any interactive functionality here
+        });
+    </script>
+</body>
+</html>
