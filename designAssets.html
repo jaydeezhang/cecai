@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>设计资产 | CECAI设计团队</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1',
+                        secondary: '#EC4899',
+                        dark: '#1E293B',
+                        light: '#F8FAFC'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .bg-grid {
+                background-size: 40px 40px;
+                background-image: radial-gradient(circle, rgba(99, 102, 241, 0.1) 1px, transparent 1px);
+            }
+            .card-hover {
+                transition: all 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-light text-dark overflow-x-hidden">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="flex items-center space-x-2">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-secondary flex items-center justify-center">
+                            <span class="text-white font-bold text-xl">C</span>
+                        </div>
+                        <span class="font-display font-bold text-xl">CECAI设计团队</span>
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="index.html" class="font-medium hover:text-primary transition-colors">首页</a>
+                    <a href="#resources" class="font-medium hover:text-primary transition-colors">资源</a>
+                    <a href="designAssets.html" class="font-medium text-primary transition-colors">设计资产</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-button" type="button" class="text-gray-500 hover:text-primary">
+                        <i class="fa fa-bars text-xl"></i>
+                    </button>
+                </div>
+                <!-- Mobile menu -->
+                <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
+                    <div class="px-4 py-3 space-y-3">
+                        <a href="index.html" class="block font-medium hover:text-primary transition-colors">首页</a>
+                        <a href="#resources" class="block font-medium hover:text-primary transition-colors">资源</a>
+                        <a href="designAssets.html" class="block font-medium text-primary transition-colors">设计资产</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 bg-grid relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-primary/5 to-transparent -skew-x-12 transform origin-top-right"></div>
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-3xl">
+                <h1 class="font-display font-bold text-[clamp(2.5rem,5vw,4rem)] leading-tight mb-6">
+                    <span class="bg-gradient-to-r from-primary to-secondary text-gradient">设计资产</span> 资源库
+                </h1>
+                <p class="text-lg text-gray-600 mb-8 max-w-2xl">
+                    CECAI设计团队的所有设计资源列表，包括主题文件、组件库和设计规范。
+                </p>
+            </div>
+        </div>
+        <!-- Decorative elements -->
+        <div class="absolute -bottom-10 -right-10 w-64 h-64 bg-secondary/10 rounded-full blur-3xl"></div>
+        <div class="absolute top-20 -left-20 w-40 h-40 bg-primary/10 rounded-full blur-2xl"></div>
+    </section>
+
+    <!-- Assets List Section -->
+    <section class="py-20">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-white rounded-xl shadow-md border border-gray-100 overflow-hidden">
+                <div class="divide-y divide-gray-100">
+                    <!-- Design Asset 1: Theme Documentation -->
+                    <div class="p-6 hover:bg-gray-50 transition-colors">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="font-display font-semibold text-xl mb-1">主题定制文档</h3>
+                                <p class="text-gray-600">Semi设计系统主题定制指南，包含变量管理和组件样式定制方法。</p>
+                            </div>
+                            <a href="theme.md" class="text-primary font-medium inline-flex items-center">
+                                查看文档 <i class="fa fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Design Asset 2: UI Components -->
+                    <div class="p-6 hover:bg-gray-50 transition-colors">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="font-display font-semibold text-xl mb-1">UI组件库</h3>
+                                <p class="text-gray-600">CECAI设计系统的核心UI组件集合，包含按钮、表单、卡片等基础元素。</p>
+                            </div>
+                            <a href="#" class="text-primary font-medium inline-flex items-center">
+                                查看组件 <i class="fa fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Design Asset 3: Brand Guidelines -->
+                    <div class="p-6 hover:bg-gray-50 transition-colors">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h3 class="font-display font-semibold text-xl mb-1">品牌设计规范</h3>
+                                <p class="text-gray-600">CECAI品牌视觉识别系统，包含Logo使用规范、色彩系统和排版指南。</p>
+                            </div>
+                            <a href="#" class="text-primary font-medium inline-flex items-center">
+                                查看规范 <i class="fa fa-arrow-right ml-2 text-sm"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
